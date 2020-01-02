@@ -35,7 +35,8 @@ public class LearnCoroutine : MonoBehaviour
 
     void Start()
     {
-       // StartCoroutine(Test());  //啟動編程
+        // StartCoroutine(Test());  //啟動編程
+        StartCoroutine(Big());
     }
 
 }
