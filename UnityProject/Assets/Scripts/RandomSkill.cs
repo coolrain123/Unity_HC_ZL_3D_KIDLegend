@@ -23,6 +23,7 @@ namespace coolrain {
         private AudioSource aud;       //音源元件
         private Text textSkill;        //技能名稱
         private GameObject panelSkilll;//隨機技能物件
+        private int index;             //隨機技能名稱
         private string[] nameSkill = { "連續射擊", "正向箭", "背向箭", "側向箭", "血量提升", "攻擊提升", "攻速提升", "爆擊提升" };
 
 
@@ -33,14 +34,16 @@ namespace coolrain {
             aud = GetComponent<AudioSource>();
             StartCoroutine(ScrollEffect());   //啟動協程
             textSkill = transform.GetChild(0).GetComponent<Text>(); //抓取子物件編號(0)的元件<text>
+            btn.onClick.AddListener(ChooseSkill);  //設定按鈕點選.監聽者.
             panelSkilll = GameObject.Find("隨機技能");
 
-            btn.onClick.AddListener(ChooseSkill);  //設定按鈕點選.監聽者.
+           
         }
 
         private void ChooseSkill()
         {
             panelSkilll.SetActive(false);
+            print("選擇的技能為 :" + textSkill.text);
         }
 
 
@@ -59,10 +62,10 @@ namespace coolrain {
                 }
             }
 
-            int r = Random.Range(0, spriteSkill.Length);    //指定出隨機技能  技能圖片陣列
-            img.sprite = spriteSkill[r];
+            int index = Random.Range(0, spriteSkill.Length);    //指定出隨機技能  技能圖片陣列
+            img.sprite = spriteSkill[index];
             aud.PlayOneShot(soundGetSkill, 1f);
-            textSkill.text = nameSkill[r];   //指定技能名稱為 nameskill陣列之r值
+            textSkill.text = nameSkill[index];   //指定技能名稱為 nameskill陣列之r值
             btn.interactable = true;    //按鍵回覆可選
         }
        
