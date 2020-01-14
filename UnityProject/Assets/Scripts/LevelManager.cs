@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,12 +18,14 @@ public class LevelManager : MonoBehaviour
     public bool autoOpenDoor;
 
     private Animator aniDoor;     //開門動畫
+    private Image imgCross;       //轉場
+
 
     private void Start()
     {
         //GameObject.Find  無法找到隱藏物件
         aniDoor = GameObject.Find("門").GetComponent<Animator>();
-       
+        imgCross = GameObject.Find("轉場效果").GetComponent<Image>();
         //如果 是 顯示技能 呼叫 顯示技能方法
         if (autoShowSkill) ShowSkill();
         //如果 是 自動開門 延時呼叫 自動方法
@@ -50,6 +55,25 @@ public class LevelManager : MonoBehaviour
     {
         objLight.SetActive(true);
     }
+
+    public IEnumerator NextLevel()
+    {
+        print("載入下一關");
+        
+
+        for (int k=0;k<50;k++)
+        {
+            imgCross.color += new Color(0, 0, 0, 0.02f);
+            yield return new WaitForSeconds(0.01f);     //等待()秒動作
+        }
+
+        SceneManager.LoadScene("關卡 2");
+        yield return new WaitForSeconds(0.5f);     //等待()秒動作
+
+
+    }
+
+
 
 
 }

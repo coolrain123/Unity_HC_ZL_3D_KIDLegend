@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+
+
 public class Player : MonoBehaviour
 {
     [Header("速度"), Range(0, 1500)]
@@ -9,7 +11,8 @@ public class Player : MonoBehaviour
     private FixedJoystick joystick;
     private Animator ani;            // 動畫控制器元件
     private Transform target;
-    //public Transform camera;
+    private LevelManager levelManager;
+    
 
 
     private void Start()
@@ -18,6 +21,7 @@ public class Player : MonoBehaviour
         ani = GetComponent<Animator>();  // 動畫控制器 = 取得元件<動畫控制器>()
         joystick = GameObject.Find("虛擬搖桿").GetComponent<FixedJoystick>();
         target = GameObject.Find("目標").transform;
+        levelManager = FindObjectOfType<LevelManager>(); //透過類型尋找物件(限制:場景上只有一個)
         
     }
 
@@ -48,5 +52,13 @@ public class Player : MonoBehaviour
 
         //camera.position = Vector3.Lerp(camera.position, target.position, 0.3f * Time.deltaTime);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "傳送區域")
+        {
+            StartCoroutine(levelManager.NextLevel());
+        }
     }
 }
