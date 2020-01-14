@@ -12,17 +12,19 @@ public class EnemyData : ScriptableObject
     public float hp;
     [Header("冷卻時間"), Range(1, 10)]
     public float cd;
+    [Header("停止距離"), Range(0.5f, 1000)]
+    public float stopDistance;
 
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
     //[Header("費用"), Range(1, 10)]
     //public float cost;
 

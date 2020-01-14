@@ -16,3 +16,4 @@ MonoBehaviour:
   atkdmg: 200
   hp: 200
   cd: 2
+  stopDistance: 50

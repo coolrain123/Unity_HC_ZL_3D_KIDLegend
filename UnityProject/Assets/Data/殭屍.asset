@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1840203e5d0eed40ba75d27ba52fc6d, type: 3}
   m_Name: "\u6BAD\u5C4D"
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 3
   atkdmg: 200
   hp: 500
   cd: 3.5
+  stopDistance: 1.8
