@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1840203e5d0eed40ba75d27ba52fc6d, type: 3}
-  m_Name: "\u6BAD\u5C4D"
+  m_Script: {fileID: 11500000, guid: 5a2e8e5c7a8472a44948d9ae5788cc81, type: 3}
+  m_Name: "\u73A9\u5BB6\u8CC7\u6599"
   m_EditorClassIdentifier: 
-  speed: 3
-  damage: 100
-  hp: 500
-  cd: 2
-  stopDistance: 2.2
-  attackLength: 1.5
-  attackY: 1.5
-  attackDelay: 0.68
+  HP: 200
+  HpMax: 200

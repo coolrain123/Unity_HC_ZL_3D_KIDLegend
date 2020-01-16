@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [Header("速度"), Range(0, 1500)]
     public float speed = 1.5f;
+    [Header("玩家資料"), Range(0, 1500)]
+    public PlayerData data;
 
     private Rigidbody rig;
     private FixedJoystick joystick;
@@ -52,6 +54,11 @@ public class Player : MonoBehaviour
 
         //camera.position = Vector3.Lerp(camera.position, target.position, 0.3f * Time.deltaTime);
 
+    }
+
+    public void Hit(float damage)
+    {
+        data.HP -= damage;
     }
 
     private void OnTriggerEnter(Collider other)
