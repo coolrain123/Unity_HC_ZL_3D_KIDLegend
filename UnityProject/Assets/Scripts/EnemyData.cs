@@ -6,7 +6,7 @@ public class EnemyData : ScriptableObject
 {
     [Header("移動速度"), Range(0, 10)]
     public float speed;
-    [Header("攻擊力"), Range(100, 1000)]
+    [Header("攻擊力"), Range(50, 1000)]
     public float damage;
     [Header("血量"), Range(100, 5000)]
     public float hp;

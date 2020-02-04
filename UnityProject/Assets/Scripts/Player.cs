@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Animator ani;            // 動畫控制器元件
     private Transform target;
     private LevelManager levelManager;
+    private HpValueManager hpValueManager;
     
 
 
@@ -21,10 +22,13 @@ public class Player : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         ani = GetComponent<Animator>();  // 動畫控制器 = 取得元件<動畫控制器>()
+
         joystick = GameObject.Find("虛擬搖桿").GetComponent<FixedJoystick>();
         target = GameObject.Find("目標").transform;
-        levelManager = FindObjectOfType<LevelManager>(); //透過類型尋找物件(限制:場景上只有一個)
-        
+
+        levelManager = FindObjectOfType<LevelManager>(); //FindObjectOfType  透過類型尋找物件(限制:場景上只有一個)
+
+        hpValueManager = GetComponentInChildren<HpValueManager>();  //子物件的元件
     }
 
     // 固定更新：一秒執行 50 次 - 處理物理行為
@@ -59,6 +63,8 @@ public class Player : MonoBehaviour
     public void Hit(float damage)
     {
         data.HP -= damage;
+        hpValueManager.SetHp(data.HP, data.HpMax);
+        StartCoroutine(hpValueManager.ShowValue(damage, "-", Color.white));
     }
 
     private void OnTriggerEnter(Collider other)
