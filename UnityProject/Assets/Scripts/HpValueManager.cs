@@ -38,8 +38,7 @@ public class HpValueManager : MonoBehaviour
     /// <param name="hpMax">最大血量</param>
     public void SetHp(float hpCurrent, float hpMax)
     {
-        HpBar.fillAmount =  hpCurrent / hpMax;
-        
+        HpBar.fillAmount =  hpCurrent / hpMax;      
         
     }
    
