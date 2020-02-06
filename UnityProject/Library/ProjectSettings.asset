@@ -645,10 +645,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 839d230f-1fa7-4e6e-beef-78eb01b9579a
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: UnityProject
+  organizationId: coolrain
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
