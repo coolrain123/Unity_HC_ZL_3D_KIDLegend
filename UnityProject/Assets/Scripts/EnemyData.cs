@@ -10,7 +10,7 @@ public class EnemyData : ScriptableObject
     public float damage;
     [Header("血量"), Range(100, 5000)]
     public float hp;
-    [Header("冷卻時間"), Range(1, 10)]
+    [Header("冷卻時間"), Range(0.1f, 10)]
     public float cd;
     [Header("停止距離"), Range(0.5f, 1000)]
     public float stopDistance;
@@ -20,8 +20,10 @@ public class EnemyData : ScriptableObject
     public float attackY;
     public float attackDelay;
 
-
-
+    [Header("遠距離單位子彈位移")]
+    public float attackZ;
+    [Header("遠距離子彈速度"), Range(0, 5000)]
+    public int bulletPower;
 
 
 

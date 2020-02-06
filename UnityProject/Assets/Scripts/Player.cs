@@ -62,9 +62,14 @@ public class Player : MonoBehaviour
 
     public void Hit(float damage)
     {
+        if (ani.GetBool("死亡開關")) return;
         data.HP -= damage;
         hpValueManager.SetHp(data.HP, data.HpMax);
         StartCoroutine(hpValueManager.ShowValue(damage, "-", Color.white));
+        if (data.HP < 0)
+        {
+            Die();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,5 +78,13 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(levelManager.NextLevel());
         }
+    }
+
+    private void Die()
+    {
+        ani.SetBool("死亡開關", true);      //死亡動畫
+        enabled = false;                    //關閉此腳本(this可省略)
+
+        StartCoroutine(levelManager.ShowRevival());
     }
 }

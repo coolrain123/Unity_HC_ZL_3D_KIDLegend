@@ -27,9 +27,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Move();
-
-        
-        
     }
     //全折疊 Ctrl + M + O
     //全展開 Ctrl + M + L
@@ -89,6 +86,7 @@ public class Enemy : MonoBehaviour
     /// <param name="damage">玩家給予的傷害值</param>
     private void Hurt(float damage)
     {
+
     }
 
     /// <summary>
@@ -96,6 +94,8 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Die()
     {
+        ani.SetBool("死亡開關", true);      //死亡動畫
+        
     }
 
     

@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: "\u98DB\u9F8D"
   m_EditorClassIdentifier: 
   speed: 0
-  damage: 0
+  damage: 68
   hp: 200
-  cd: 3
-  stopDistance: 50
+  cd: 2
+  stopDistance: 100
   attackLength: 0
-  attackY: 0
+  attackY: 2.5
   attackDelay: 0
+  attackZ: 1.8
+  bulletPower: 1500
