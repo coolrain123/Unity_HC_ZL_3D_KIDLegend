@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         Vector3 postarget = new Vector3(target.position.x, transform.position.y, target.position.z);
         transform.LookAt(postarget);
 
-
+        if (v == 0 && h == 0) Attack();
         //camera.position = Vector3.Lerp(camera.position, target.position, 0.3f * Time.deltaTime);
 
     }
@@ -83,8 +83,25 @@ public class Player : MonoBehaviour
     private void Die()
     {
         ani.SetBool("死亡開關", true);      //死亡動畫
+       
         enabled = false;                    //關閉此腳本(this可省略)
 
         StartCoroutine(levelManager.ShowRevival());
+    }
+
+    public void Revival()
+    {
+        enabled = true;
+        ani.SetBool("死亡開關", false);
+       
+        data.HP = data.HpMax;
+        hpValueManager.SetHp(data.HP, data.HpMax);
+        levelManager.HideRevival();
+        
+    }
+    private void Attack()
+    {
+        ani.SetTrigger("攻擊觸發");
+       
     }
 }

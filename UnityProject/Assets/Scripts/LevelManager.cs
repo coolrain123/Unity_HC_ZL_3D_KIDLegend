@@ -16,11 +16,13 @@ public class LevelManager : MonoBehaviour
     public bool autoShowSkill;
     [Header("是否自動開門")]
     public bool autoOpenDoor;
-    [Header("復活畫面")]
+    [Header("復活畫面,復活按鈕")]
     public GameObject PanelRevival;
+    public Button btnRevival;
 
     private Animator aniDoor;     //開門動畫
     private Image imgCross;       //轉場
+    private AdManager AdManager;  //廣告管理器
 
 
     private void Start()
@@ -38,6 +40,9 @@ public class LevelManager : MonoBehaviour
 
         //重複調用("方法名稱",延遲時間,重複頻率)
         //InvokeRepeating("OpenDoor", 0, 1.5f);
+
+        AdManager = FindObjectOfType<AdManager>();               //以物件類型搜尋目標物件
+        btnRevival.onClick.AddListener(AdManager.ShowADRevival);   //復活按鈕.點擊.增加監聽者
     }
     /// <summary>
     /// 顯示技能
@@ -86,6 +91,12 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
+    }
+
+    public void HideRevival()
+    {
+        PanelRevival.SetActive(false);
+        StopCoroutine(ShowRevival());
     }
 
 
