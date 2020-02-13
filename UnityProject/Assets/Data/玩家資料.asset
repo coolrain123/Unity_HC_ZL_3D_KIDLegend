@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2e8e5c7a8472a44948d9ae5788cc81, type: 3}
   m_Name: "\u73A9\u5BB6\u8CC7\u6599"
   m_EditorClassIdentifier: 
-  HP: -444
+  HP: 132
   HpMax: 200
+  attackY: 1
+  attackZ: 1
+  cd: 0.5
+  bulletPower: 1500
+  damage: 80

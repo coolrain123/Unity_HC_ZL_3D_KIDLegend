@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   damage: 68
-  hp: 200
+  HP: -780
+  HpMax: 500
   cd: 2
   stopDistance: 100
   attackLength: 0

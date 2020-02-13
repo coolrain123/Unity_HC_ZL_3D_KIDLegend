@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent nav;  //導覽網格代理器
     private GameObject player;
     private float timer;       //計時器
+    private float atkRange;
+    private HpValueManager hpValueManager;
 
-    private float atkRange; 
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour
 
         nav.speed = data.speed;         
         nav.stoppingDistance = data.stopDistance;
+        hpValueManager = GetComponentInChildren<HpValueManager>();  //子物件的元件
     }
 
     private void Update()
@@ -84,18 +87,29 @@ public class Enemy : MonoBehaviour
     /// 受傷
     /// </summary>
     /// <param name="damage">玩家給予的傷害值</param>
-    private void Hurt(float damage)
+    public void Hit(float damage)
     {
-
+        if (ani.GetBool("死亡開關")) return;
+        data.HP -= damage;
+        hpValueManager.SetHp(data.HP, data.HpMax);
+        StartCoroutine(hpValueManager.ShowValue(damage, "-", Color.white));
+        if (data.HP < 0)
+        {
+            Die();
+        }
     }
 
     /// <summary>
     /// 死亡
     /// </summary>
-    void Die()
+    public void  Die()
     {
-        ani.SetBool("死亡開關", true);      //死亡動畫
         
+        ani.SetBool("死亡開關", true);      //死亡動畫
+
+        enabled = false;                    //關閉此腳本(this可省略)
+
+       
     }
 
     
