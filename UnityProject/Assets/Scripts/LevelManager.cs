@@ -99,7 +99,19 @@ public class LevelManager : MonoBehaviour
         StopCoroutine(ShowRevival());
     }
 
-
+    /// <summary>
+    /// 過關:開門，道具跑向玩家
+    /// </summary>
+    public void Pass()
+    {
+        OpenDoor();
+        TurnOntheLight();
+        Item[] items = FindObjectsOfType<Item>();
+        for (int i = 0; i <items.Length; i++)
+        {
+            items[i].pass = true;
+        }
+    }
 
 
 }

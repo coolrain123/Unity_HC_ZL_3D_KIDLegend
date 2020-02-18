@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   damage: 68
-  HP: -780
-  HpMax: 500
-  cd: 2
+  HP: 300
+  HpMax: 300
+  cd: 4
   stopDistance: 100
   attackLength: 0
   attackY: 2.5
   attackDelay: 0
   attackZ: 1.8
-  bulletPower: 1500
+  bulletPower: 775
+  coinRange: {x: 100, y: 200}

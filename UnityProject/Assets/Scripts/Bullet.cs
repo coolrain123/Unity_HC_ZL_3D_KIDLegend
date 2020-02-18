@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
             other.GetComponent<Player>().Hit(damage);   //取得<玩家> 的 Hit 方法
             Destroy(gameObject);
         }
-        if (player && other.tag == "敵人")
+        if (player && other.tag == "敵人" && other.GetComponent<Enemy>())
         {
             other.GetComponent<Enemy>().Hit(damage);   //取得<敵人> 的 Hit 方法
             Destroy(gameObject);

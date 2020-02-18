@@ -110,12 +110,18 @@ public class Player : MonoBehaviour
             timer += Time.deltaTime;
         }
         else
-        {
+        {                 
+            //1.取得敵人數
+            enemys = FindObjectsOfType<Enemy>();
+
+            if (enemys.Length ==0)  //如果沒敵人就跳出
+            {
+                levelManager.Pass();  //過關啟動
+                return;
+            }
+
             timer = 0;
             ani.SetTrigger("攻擊觸發");
-
-            //1.取得敵人數
-            enemys = FindObjectsOfType<Enemy>();      
             //2.取得敵人距離
             enemysDis = new float[enemys.Length];             //距離陣列= 新 浮點數陣列[數量]
 
@@ -152,4 +158,6 @@ public class Player : MonoBehaviour
         bulletPos = transform.position + transform.forward * data.attackZ + transform.up * data.attackY;
         Gizmos.DrawSphere(bulletPos, 0.1f);
     }
+
+
 }

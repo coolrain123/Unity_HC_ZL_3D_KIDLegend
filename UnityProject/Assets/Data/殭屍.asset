@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   damage: 50
-  HP: -860
-  HpMax: 500
+  HP: 200
+  HpMax: 200
   cd: 2
   stopDistance: 2.2
   attackLength: 1.5
@@ -23,3 +23,4 @@ MonoBehaviour:
   attackDelay: 0.68
   attackZ: 0
   bulletPower: 0
+  coinRange: {x: 10, y: 20}

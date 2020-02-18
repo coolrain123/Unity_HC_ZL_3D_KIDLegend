@@ -5,8 +5,9 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     [Header("怪物資料")]
-    public EnemyData data;
+    public EnemyData data;       //腳本化物件:所有實體物件共用
 
+    private float hp;          //欄位:物件獨立使用
     private Animator ani;
     private NavMeshAgent nav;  //導覽網格代理器
     private GameObject player;
@@ -22,6 +23,8 @@ public class Enemy : MonoBehaviour
 
         player = GameObject.Find("鼠王");
 
+
+        hp = data.HP;
         nav.speed = data.speed;         
         nav.stoppingDistance = data.stopDistance;
         hpValueManager = GetComponentInChildren<HpValueManager>();  //子物件的元件
@@ -54,6 +57,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Move()
     {
+        if (ani.GetBool("死亡開關")) return;
         Vector3 posTarget = player.transform.position;
         posTarget.y = transform.position.y;
         transform.LookAt(posTarget);
@@ -90,10 +94,10 @@ public class Enemy : MonoBehaviour
     public void Hit(float damage)
     {
         if (ani.GetBool("死亡開關")) return;
-        data.HP -= damage;
-        hpValueManager.SetHp(data.HP, data.HpMax);
+        hp -= damage;
+        hpValueManager.SetHp(hp, data.HpMax);
         StartCoroutine(hpValueManager.ShowValue(damage, "-", Color.white));
-        if (data.HP < 0)
+        if (hp < 0)
         {
             Die();
         }
@@ -106,11 +110,24 @@ public class Enemy : MonoBehaviour
     {
         
         ani.SetBool("死亡開關", true);      //死亡動畫
-
-        enabled = false;                    //關閉此腳本(this可省略)
-
-       
+        nav.isStopped = true;
+        Destroy(this);
+        Destroy(GetComponent<CapsuleCollider>());
+        CreateCoin();
     }
 
+    [Header("金幣")]
+    public GameObject coin;
+    private void CreateCoin()
+    {
+        //(int) 可強制讓浮點數轉為整數，去除小數點
+        int r = (int)Random.Range(data.coinRange.x, data.coinRange.y);
+
+        for (int i = 0; i < r; i++)
+        {
+            Instantiate(coin, transform.position + transform.up * 2, transform.rotation);
+        }
+        
+    }
     
 }
