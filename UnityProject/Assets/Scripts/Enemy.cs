@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour
         nav.isStopped = true;
         Destroy(this);
         Destroy(GetComponent<CapsuleCollider>());
+        Destroy(gameObject, 0.5f);
         CreateCoin();
     }
 

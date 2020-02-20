@@ -74,8 +74,16 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);     //等待()秒動作
         }
 
-        SceneManager.LoadScene("關卡 2");
-        yield return new WaitForSeconds(0.5f);     //等待()秒動作
+        if (SceneManager.GetActiveScene().name.Contains("BOSS"))
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(++index);
+            yield return new WaitForSeconds(0.5f);     //等待()秒動作
+        }
 
 
     }

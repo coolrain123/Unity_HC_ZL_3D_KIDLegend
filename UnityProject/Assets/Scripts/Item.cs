@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Physics.IgnoreLayerCollision(10, 10, false);
         HandleCollision();
         player = GameObject.Find("鼠王").transform;
         aud = GetComponent<AudioSource>();
@@ -41,7 +42,7 @@ public class Item : MonoBehaviour
             Physics.IgnoreLayerCollision(10, 10);
             transform.position = Vector3.Lerp(transform.position, player.position, 0.5f * Time.deltaTime * 10);
 
-            if (Vector3.Distance(transform.position,player.position)<0&& !aud.isPlaying)
+            if (Vector3.Distance(transform.position,player.position) < 0.8f && !aud.isPlaying)
             {
                 aud.PlayOneShot(sound, 0.3f);
                 Destroy(gameObject, 0.3f);
