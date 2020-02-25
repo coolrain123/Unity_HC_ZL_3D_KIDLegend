@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        hpValueManager.SetHp(data.HP, data.HpMax);
     }
 
     /// <summary>

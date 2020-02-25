@@ -40,12 +40,12 @@ public class Item : MonoBehaviour
         if (pass)
         {
             Physics.IgnoreLayerCollision(10, 10);
-            transform.position = Vector3.Lerp(transform.position, player.position, 0.5f * Time.deltaTime * 10);
+            transform.position = Vector3.Lerp(transform.position, player.position, 0.8f * Time.deltaTime * 10);
 
-            if (Vector3.Distance(transform.position,player.position) < 0.8f && !aud.isPlaying)
+            if (Vector3.Distance(transform.position,player.position) < 1f && !aud.isPlaying)
             {
                 aud.PlayOneShot(sound, 0.3f);
-                Destroy(gameObject, 0.3f);
+                Destroy(gameObject, 0.5f);
             }
         }
 
